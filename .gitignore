@@ -1,0 +1,4 @@
+.env
+config.local.json
+site_credentials.json
+.private
