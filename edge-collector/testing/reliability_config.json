@@ -1,0 +1,14 @@
+{
+  "site_id": "demo-site-001",
+  "collector_id": "pi-edge-reliability",
+  "api_url": "http://50.19.79.71:8000/api/v1/ingest/bacnet",
+  "bearer_token": "REPLACE_WITH_TOKEN",
+  "protocol": "bacnet-ip",
+  "poll_interval_seconds": 30,
+  "max_retries": 3,
+  "backoff_seconds": 2,
+  "request_timeout_seconds": 15,
+  "spool_dir": "edge-collector/spool/reliability",
+  "drain_spool_on_start": true,
+  "log_level": "INFO"
+}

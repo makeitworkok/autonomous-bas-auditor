@@ -1,4 +1,33 @@
 .env
+.env.*
+*.env
+!.env.example
 config.local.json
 site_credentials.json
-.private
+
+# Private and secret-bearing local workspace content
+.private/
+*.pem
+*.key
+*.p12
+*.pfx
+*id_rsa*
+*id_ed25519*
+
+# Python caches and local virtual environments
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+venv/
+
+# Runtime data and local configs
+data/raw_payloads/
+edge-collector/spool/
+edge-collector/config/config.json
+edge-collector/testing/*.log
+edge-collector/testing/*.pid
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

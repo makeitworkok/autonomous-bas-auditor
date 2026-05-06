@@ -1,0 +1,15 @@
+[Unit]
+Description=Autonomous BAS Auditor FastAPI Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/autonomous-bas-auditor/cloud-api
+EnvironmentFile=/etc/autonomous-bas-auditor/api.env
+ExecStart=/home/ubuntu/autonomous-bas-auditor/cloud-api/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

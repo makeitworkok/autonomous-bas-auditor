@@ -1,0 +1,16 @@
+[Unit]
+Description=Autonomous BAS Edge Collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/autonomous-bas-auditor
+Environment=EDGE_COLLECTOR_CONFIG=/home/pi/autonomous-bas-auditor/edge-collector/config/config.json
+ExecStart=/home/pi/autonomous-bas-auditor/.venv/bin/python /home/pi/autonomous-bas-auditor/edge-collector/run_collector.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

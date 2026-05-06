@@ -18,3 +18,8 @@ An edge-to-cloud system that ingests building automation data (BACnet/Modbus), i
 ## Status
 
 Early prototype (ClawComp build)
+
+## Documentation
+
+- Full docs package: [docs/README.md](docs/README.md)
+- ClawComp notes: [docs/clawcomp-submission-notes.md](docs/clawcomp-submission-notes.md)
