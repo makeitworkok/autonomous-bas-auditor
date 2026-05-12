@@ -17,6 +17,13 @@
 - [x] `--once` and `--max-cycles` CLI flags
 - [x] 24h reliability test harness (PowerShell scripts under `edge-collector/testing/`)
 
+## Phase 2.5 — OpenClaw Skill Foundation
+**Status: complete**
+- [x] Agent skill directory structure (`skills/autonomous-bas-auditor/`)
+- [x] `SKILL.md` definition with metadata, instructions, and environment config
+- [x] Supported workflows: data ingestion, health checks, raw data inspection, audit execution
+- [x] Natural-language-ready documentation across all components
+
 ## Phase 3 — Real BACnet Acquisition
 **Status: not started**
 - [ ] Integrate bacpypes3
@@ -41,11 +48,12 @@
 - [ ] Top-3 finding ranking
 - [ ] Incentive category mapping
 
-## Phase 7 — OpenClaw Orchestration
+## Phase 7 — OpenClaw Skill Expansion
 **Status: not started**
-- [ ] OpenClaw agents and tools
-- [ ] End-to-end orchestration pipeline
-- [ ] Trace logging and retries
+- [ ] Expanded skill coverage for normalization, fault detection, and ROI modules
+- [ ] Multi-step orchestration with inter-stage traceability
+- [ ] Trace logging and automatic retries
+- [ ] Report generation skill
 
 ## External dependencies (not in code)
 - Raspberry Pi hardware and network placement

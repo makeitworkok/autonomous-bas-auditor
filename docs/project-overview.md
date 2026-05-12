@@ -4,6 +4,8 @@
 
 Autonomous BAS Auditor is a demo/prototype edge-to-cloud building automation audit system built for the [ClawComp](https://clawcomp.net) competition.
 
+**🐾 OpenClaw Native** — This project is built with first-class OpenClaw integration. An agent skill definition (`skills/autonomous-bas-auditor/SKILL.md`) enables the full pipeline to be orchestrated via natural English commands.
+
 It ingests BAS telemetry (BACnet/IP payloads), stores raw data for traceability, and is designed to eventually detect operational and energy inefficiencies, estimate financial impact, and surface incentive pathways.
 
 > This is internal tooling for demonstration purposes — not built for production scale.
@@ -29,6 +31,7 @@ Most commercial buildings have energy and operational inefficiencies buried in t
 - [x] Local spool queue for failed posts (drain-on-startup)
 - [x] `--once` and `--max-cycles` CLI modes
 - [x] 24h reliability test harness (`edge-collector/testing/`)
+- [x] OpenClaw agent skill definition (`skills/autonomous-bas-auditor/SKILL.md`)
 
 ## What's planned
 
@@ -37,7 +40,7 @@ Most commercial buildings have energy and operational inefficiencies buried in t
 - [ ] Deterministic fault detection rules
 - [ ] ROI estimation and top-findings ranking
 - [ ] Incentive category mapping
-- [ ] OpenClaw agent orchestration
+- [ ] Expanded OpenClaw skill coverage for multi-step orchestration
 - [ ] Reporting layer
 
 ## Scope boundaries

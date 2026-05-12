@@ -1,5 +1,7 @@
 # System Architecture
 
+> **🐾 OpenClaw Native** — This architecture is designed for natural-language orchestration via OpenClaw agent skills. Every component exposes clear contracts that an OpenClaw agent can invoke through English commands.
+
 ## Data flow
 
 ```
@@ -51,10 +53,26 @@
 - ROI ranking (top findings)
 - Incentive category mapping
 
-### OpenClaw Orchestration (planned)
+### OpenClaw Agent Skill (`skills/autonomous-bas-auditor/`)
 
-- Invokes each engine stage in sequence
-- Handles traceability, retries, and final report assembly
+This project is **OpenClaw-native** — the agent skill definition lives at `skills/autonomous-bas-auditor/SKILL.md` and enables natural English-to-action orchestration across the full pipeline.
+
+**Supported workflows:**
+- **Run an audit** — orchestrates ingestion → normalization → fault detection → ROI → report
+- **Ingest data** — triggers the edge collector and confirms payload acceptance
+- **Check system health** — queries the API health endpoint and spool backlog
+- **Inspect raw data** — reads and summarizes stored payloads
+
+**How it works:**
+- The `SKILL.md` file provides the agent with context about the system's components, APIs, and environment
+- Natural language commands are mapped to shell commands (`curl`, `python run_collector.py`) and API calls
+- The agent uses bearer auth from env vars — tokens are never exposed in output
+- All actions maintain traceability via payload IDs and timestamps
+
+**Planned extensions:**
+- Invokes each audit engine stage in sequence
+- Handles multi-step traceability, retries, and final report assembly
+- Expanded skill coverage as normalization, fault rules, and ROI modules come online
 
 ## Data contracts
 

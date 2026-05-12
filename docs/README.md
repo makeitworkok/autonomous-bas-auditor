@@ -2,6 +2,8 @@
 
 This folder is the central knowledge base for the Autonomous BAS Auditor project.
 
+> **🐾 OpenClaw Native** — This project is designed with first-class OpenClaw integration. All documentation is structured for natural-language agent consumption, and the `skills/` directory contains agent skill definitions for English-to-action orchestration.
+
 > This is internal documentation for a demo/prototype. It covers how the system works and how to run it — not production operations.
 
 ## Audience
@@ -22,6 +24,7 @@ This folder is the central knowledge base for the Autonomous BAS Auditor project
 | [Operations Runbook](operations-runbook.md) | Health checks, troubleshooting, incidents |
 | [Development Roadmap](development-roadmap.md) | Phase-by-phase progress tracker |
 | [Decision Log](decision-log.md) | Architecture and product decision records |
+| [OpenClaw Agent Skill](../skills/autonomous-bas-auditor/SKILL.md) | Agent skill definition for natural-language orchestration |
 | [ClawComp Submission Notes](clawcomp-submission-notes.md) | Contest-specific framing and demo script |
 
 ## Maintenance rules
