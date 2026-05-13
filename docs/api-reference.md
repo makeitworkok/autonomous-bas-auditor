@@ -1,45 +1,73 @@
 # API Reference
 
+> **Note**: The base URL below points to the current Lightsail demo instance. This is a prototype deployment, not a production endpoint.
+
 ## Base URL
-Current deployment target: http://50.19.79.71:8000
 
-## GET /health
-Purpose: service liveness check.
+```
+http://50.19.79.71:8000
+```
 
-Response 200 example:
+---
+
+## `GET /health`
+
+Public liveness check. No authentication required.
+
+**Response `200`**:
+
+```json
 {
   "status": "ok",
   "service": "autonomous-bas-auditor-api"
 }
+```
 
-## POST /api/v1/ingest/bacnet
-Purpose: submit site BAS payload from edge collector.
+---
 
-Auth:
-- Required header: Authorization: Bearer <token>
+## `POST /api/v1/ingest/bacnet`
 
-Request body fields:
-- site_id (string)
-- collector_id (string)
-- timestamp_utc (string, optional)
-- protocol (string, defaults to bacnet-ip)
-- devices (array)
+Submit a BAS payload from the edge collector.
 
-Device fields:
-- device_instance (int)
-- device_name (string, optional)
-- address (string)
-- vendor_name (string, optional)
-- objects (array)
+### Authentication
 
-Object fields:
-- object_type (string)
-- object_instance (int)
-- object_name (string, optional)
-- present_value (any, optional)
-- units (string, optional)
+| Header | Value |
+|--------|-------|
+| `Authorization` | `Bearer <token>` |
 
-Response 200 example:
+### Request body
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| `site_id` | string | yes | — | Site identifier |
+| `collector_id` | string | yes | — | Collector identifier |
+| `timestamp_utc` | string | no | — | ISO 8601 timestamp |
+| `protocol` | string | no | `"bacnet-ip"` | Protocol tag |
+| `devices` | array | yes | — | List of device objects |
+
+### Device object
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `device_instance` | int | yes | BACnet device instance |
+| `device_name` | string | no | Human-readable name |
+| `address` | string | yes | Network address |
+| `vendor_name` | string | no | Controller vendor |
+| `objects` | array | no | List of BACnet objects |
+
+### BACnet object
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `object_type` | string | yes | e.g. `"analogInput"` |
+| `object_instance` | int | yes | Object instance number |
+| `object_name` | string | no | Human-readable name |
+| `present_value` | any | no | Current value |
+| `units` | string | no | e.g. `"degreesFahrenheit"` |
+
+### Response `200`
+
+```json
 {
   "status": "accepted",
   "payload_id": "uuid",
@@ -47,9 +75,14 @@ Response 200 example:
   "collector_id": "pi-edge-001",
   "protocol": "bacnet-ip",
   "devices_received": 1,
-  "received_at": "timestamp"
+  "received_at": "2026-05-12T22:00:00+00:00"
 }
+```
 
-Error behavior:
-- 401 when Authorization header is missing/invalid
-- 503 when server token is not configured
+### Error responses
+
+| Status | Cause |
+|--------|-------|
+| `401 Unauthorized` | Missing or invalid `Authorization` header |
+| `422 Unprocessable Entity` | Request body fails Pydantic validation (missing required fields, wrong types) |
+| `503 Service Unavailable` | Server-side `BAS_AUDITOR_API_TOKEN` env var is not configured |

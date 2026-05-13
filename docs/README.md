@@ -2,24 +2,33 @@
 
 This folder is the central knowledge base for the Autonomous BAS Auditor project.
 
+> **🐾 OpenClaw Native** — This project is designed with first-class OpenClaw integration. All documentation is structured for natural-language agent consumption, and the `skills/` directory contains agent skill definitions for English-to-action orchestration.
+
+> This is internal documentation for a demo/prototype. It covers how the system works and how to run it — not production operations.
+
 ## Audience
+
 - Builders and maintainers of the codebase
-- Operators deploying to Lightsail and Raspberry Pi
-- ClawComp judges/reviewers who need a concise but complete technical package
+- Anyone deploying or demoing the system
+- ClawComp judges/reviewers
 
 ## Document Index
-- [Project Overview](project-overview.md)
-- [System Architecture](architecture.md)
-- [Cloud API Setup (Lightsail)](setup-lightsail.md)
-- [Edge Collector Setup (MVP)](setup-edge-collector.md)
-- [API Reference](api-reference.md)
-- [Operations Runbook](operations-runbook.md)
-- [Development Roadmap](development-roadmap.md)
-- [ClawComp Submission Notes](clawcomp-submission-notes.md)
-- [Decision Log](decision-log.md)
 
-## Maintenance Rules
-- Keep docs aligned with code changes in the same PR whenever possible.
-- Record meaningful architecture/product decisions in the decision log.
-- Update roadmap status when a phase milestone changes.
-- Keep deployment docs free of secrets; never commit live credentials.
+| Document | Purpose |
+|----------|---------|
+| [Project Overview](project-overview.md) | What this project is, what's built, what's planned |
+| [System Architecture](architecture.md) | Components, data flow, and contracts |
+| [API Reference](api-reference.md) | Endpoints, request/response schemas, error codes |
+| [Cloud API Setup](setup-lightsail.md) | Deploying the API to Lightsail |
+| [Edge Collector Setup](setup-edge-collector.md) | Running the collector locally or on a Pi |
+| [Operations Runbook](operations-runbook.md) | Health checks, troubleshooting, incidents |
+| [Development Roadmap](development-roadmap.md) | Phase-by-phase progress tracker |
+| [Decision Log](decision-log.md) | Architecture and product decision records |
+| [OpenClaw Agent Skill](../skills/autonomous-bas-auditor/SKILL.md) | Agent skill definition for natural-language orchestration |
+| [ClawComp Submission Notes](clawcomp-submission-notes.md) | Contest-specific framing and demo script |
+
+## Maintenance rules
+
+- Keep docs aligned with code changes
+- Record meaningful decisions in the decision log
+- Update roadmap checkboxes when a milestone is completed
